@@ -1,0 +1,61 @@
+[PrefixDeclaration]
+:		http://example.org/uaz#
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+obda:		https://w3id.org/obda/vocabulary#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[MappingDeclaration] @collection [[
+mappingId	Vehicle
+target		:vehicles/{id} a :Vehicle ; :hasName {name}^^xsd:string ; :width {width}^^xsd:decimal ; :length {length}^^xsd:decimal ; :radius {radius}^^xsd:decimal ; :power {power}^^xsd:decimal . 
+source		SELECT * FROM VEHICLES
+
+mappingId	TrackType
+target		:tracks/{id} a :TrackType ; :hasName {name}^^xsd:string . 
+source		SELECT * FROM TRACKS
+
+mappingId	ToolType
+target		:{type} a :ToolType . 
+source		SELECT DISTINCT TYPE FROM SPRAYERS
+			UNION
+			SELECT DISTINCT TYPE FROM SPREADERS
+
+mappingId	Object
+target		:objects/{id} a :Object ; :hasName {name}^^xsd:string ; :hasCoordinate :coordinates/{cid} . 
+source		SELECT o.*, oc.COORDINATES_ID AS CID
+			FROM OBJECTS o
+			INNER JOIN OBJECTS_COORDINATES oc
+			ON o.ID = oc.OBJECT_ENTITY_ID
+
+mappingId	Coordinate
+target		:coordinates/{id} a :Coordinate ; :latitude {latitude}^^xsd:decimal ; :longitude {longitude}^^xsd:decimal . 
+source		SELECT * FROM COORDINATES
+
+mappingId	ObjectType
+target		:{name} a :ObjectType . 
+source		SELECT DISTINCT NAME FROM OBJECTS
+
+mappingId	Sprayer
+target		:sprayers/{id} a :Sprayer ; :hasName {name}^^xsd:string ; :tankVolume {tank_volume}^^xsd:decimal ; :powerRequired {power_required}^^xsd:decimal ; :toolType :{type} . 
+source		SELECT * FROM SPRAYERS
+
+mappingId	Spreader
+target		:spreaders/{id} a :Spreader ; :hasName {name}^^xsd:string ; :diskDiameter {disk_diameter}^^xsd:decimal ; :powerRequired {power_required}^^xsd:decimal ; :toolType :{type} . 
+source		SELECT * FROM SPREADERS
+
+mappingId	Agricultural
+target		:cultures/{id} a :Agricultural ; :hasName {name}^^xsd:string ; :trackRequired :tracks/{track_required_id} ; :toolTypeRequired :{tool_type_required} . 
+source		SELECT * FROM AGRICULTURALS
+
+mappingId	Field
+target		:fields/{id} a :Field ; :hasName {name}^^xsd:string ; :hasAgricultural :cultures/{aid} ; :hasBorderCoordinate :coordinates/{cid} ; :hasObject :objects/{oid} . 
+source		SELECT f.ID AS id, f.NAME AS NAME, f.CULTURE_ID AS AID, fc.COORDINATES_ID AS CID, fo.OBJECTS_ID AS OID
+			FROM FIELDS f
+			INNER JOIN FIELDS_COORDINATES fc
+			ON f.ID = fc.FIELD_ENTITY_ID
+			LEFT JOIN FIELDS_OBJECTS fo
+			ON f.ID = fo.FIELD_ENTITY_ID
+]]
+

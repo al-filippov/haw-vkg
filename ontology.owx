@@ -1,0 +1,572 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://example.org/uaz#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://example.org/uaz#">
+    <Prefix name="" IRI="http://example.org/uaz#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="obda" IRI="https://w3id.org/obda/vocabulary#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="Agricultural"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Coordinate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Field"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Object"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ObjectType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Sprayer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Spreader"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Tool"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ToolType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="TrackType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Vehicle"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasAgricultural"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasBorderCoordinate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasCoordinate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasObject"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="objectType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="toolType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="toolTypeRequired"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="trackRequired"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="diskDiameter"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="latitude"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="length"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="longitude"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="power"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="powerRequired"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="radius"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tankVolume"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="width"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="circular"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="ravine"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="saline"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="sprayer"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="spreader"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="zigzag"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="ObjectType"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="ravine"/>
+            <NamedIndividual IRI="saline"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="ToolType"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="sprayer"/>
+            <NamedIndividual IRI="spreader"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="TrackType"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="circular"/>
+            <NamedIndividual IRI="zigzag"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="Agricultural"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="toolTypeRequired"/>
+                <Class IRI="ToolType"/>
+            </ObjectSomeValuesFrom>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="toolTypeRequired"/>
+                <Class IRI="ToolType"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Agricultural"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="trackRequired"/>
+                <Class IRI="TrackType"/>
+            </ObjectSomeValuesFrom>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="trackRequired"/>
+                <Class IRI="TrackType"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Coordinate"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="latitude"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataSomeValuesFrom>
+            <DataAllValuesFrom>
+                <DataProperty IRI="latitude"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Coordinate"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="longitude"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataSomeValuesFrom>
+            <DataAllValuesFrom>
+                <DataProperty IRI="longitude"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Field"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="hasAgricultural"/>
+                <Class IRI="Agricultural"/>
+            </ObjectSomeValuesFrom>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="hasAgricultural"/>
+                <Class IRI="Agricultural"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Field"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="hasBorderCoordinate"/>
+                <Class IRI="Coordinate"/>
+            </ObjectSomeValuesFrom>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="hasBorderCoordinate"/>
+                <Class IRI="Coordinate"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Field"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="hasObject"/>
+            <Class IRI="Object"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Object"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="hasCoordinate"/>
+                <Class IRI="Coordinate"/>
+            </ObjectSomeValuesFrom>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="hasCoordinate"/>
+                <Class IRI="Coordinate"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Object"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="objectType"/>
+                <Class IRI="ObjectType"/>
+            </ObjectSomeValuesFrom>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="objectType"/>
+                <Class IRI="ObjectType"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Sprayer"/>
+        <Class IRI="Tool"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Sprayer"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="tankVolume"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataSomeValuesFrom>
+            <DataAllValuesFrom>
+                <DataProperty IRI="tankVolume"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Spreader"/>
+        <Class IRI="Tool"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Spreader"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="diskDiameter"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataSomeValuesFrom>
+            <DataAllValuesFrom>
+                <DataProperty IRI="diskDiameter"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Tool"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="toolType"/>
+                <Class IRI="ToolType"/>
+            </ObjectSomeValuesFrom>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="toolType"/>
+                <Class IRI="ToolType"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Tool"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="powerRequired"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataSomeValuesFrom>
+            <DataAllValuesFrom>
+                <DataProperty IRI="powerRequired"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Vehicle"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="length"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataSomeValuesFrom>
+            <DataAllValuesFrom>
+                <DataProperty IRI="length"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Vehicle"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="power"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataSomeValuesFrom>
+            <DataAllValuesFrom>
+                <DataProperty IRI="power"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Vehicle"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="radius"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataSomeValuesFrom>
+            <DataAllValuesFrom>
+                <DataProperty IRI="radius"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Vehicle"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="width"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataSomeValuesFrom>
+            <DataAllValuesFrom>
+                <DataProperty IRI="width"/>
+                <Datatype abbreviatedIRI="xsd:decimal"/>
+            </DataAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="owl:Thing"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="hasName"/>
+                <Datatype abbreviatedIRI="xsd:string"/>
+            </DataSomeValuesFrom>
+            <DataAllValuesFrom>
+                <DataProperty IRI="hasName"/>
+                <Datatype abbreviatedIRI="xsd:string"/>
+            </DataAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="hasAgricultural"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="objectType"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="toolType"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="toolTypeRequired"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="trackRequired"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasAgricultural"/>
+        <Class IRI="Field"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasBorderCoordinate"/>
+        <Class IRI="Field"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasCoordinate"/>
+        <Class IRI="Object"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasObject"/>
+        <Class IRI="Field"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="objectType"/>
+        <Class IRI="Object"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="toolType"/>
+        <Class IRI="Tool"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="toolTypeRequired"/>
+        <Class IRI="Agricultural"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="trackRequired"/>
+        <Class IRI="Agricultural"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasAgricultural"/>
+        <Class IRI="Agricultural"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasBorderCoordinate"/>
+        <Class IRI="Coordinate"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasCoordinate"/>
+        <Class IRI="Coordinate"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasObject"/>
+        <Class IRI="Object"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="objectType"/>
+        <Class IRI="ObjectType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="toolType"/>
+        <Class IRI="ToolType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="toolTypeRequired"/>
+        <Class IRI="ToolType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="trackRequired"/>
+        <Class IRI="TrackType"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="diskDiameter"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hasName"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="latitude"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="length"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="longitude"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="power"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="powerRequired"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="radius"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tankVolume"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="width"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="diskDiameter"/>
+        <Class IRI="Spreader"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasName"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="latitude"/>
+        <Class IRI="Coordinate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="length"/>
+        <Class IRI="Vehicle"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="longitude"/>
+        <Class IRI="Coordinate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="power"/>
+        <Class IRI="Vehicle"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="powerRequired"/>
+        <Class IRI="Tool"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="radius"/>
+        <Class IRI="Vehicle"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tankVolume"/>
+        <Class IRI="Sprayer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="width"/>
+        <Class IRI="Vehicle"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="diskDiameter"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hasName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="latitude"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="length"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="longitude"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="power"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="powerRequired"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="radius"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tankVolume"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="width"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
